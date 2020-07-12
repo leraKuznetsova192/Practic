@@ -7,7 +7,7 @@
 using namespace std;
 
 
-int read_mat(int a[N][N])
+int read_mat(int a[][N])
 {
 	printf("Введите элементы матрицы : \n");
 	for (int i = 0; i < N; i++)
@@ -17,11 +17,10 @@ int read_mat(int a[N][N])
 			cin >> a[i][j];
 		}
 	}
-	return a[N][N];
 }
 
 
-int read_mat_file(int a[N][N])
+int read_mat_file(int a[][N])
 {
 	ifstream f("111.txt");
 	printf("Файл открыт\n");
@@ -31,13 +30,13 @@ int read_mat_file(int a[N][N])
 			f >> a[i][j];
 	}
 	f.close();
-	return a[N][N];
 }
 
-int masivX(int a[N][N], int x[N])
+int* vvod_X(int a[][N], int x[N], void (*pfunc) (int mas[][N]))
 {
-	int q,p,t,s;
-	
+	int q, p, t, s;
+	pfunc(a);
+
 	for (int i = 0; i < N; i++)
 	{
 		q = 0; p = 0; t = 0; s = 0;
@@ -64,7 +63,7 @@ int masivX(int a[N][N], int x[N])
 				x[i] = 0;
 		}
 	}
-	return x[N];
+	return x;
 }
 
 void vivodAX(int a[N][N], int x[N], int i, int j)
@@ -112,12 +111,13 @@ void programma()
 {
 	int c, i = 0, j = 0, a[N][N], x[N] = { 0,0,0,0,0 }, y = 0;
 	setlocale(LC_CTYPE, "");
+	void (*PointX)(int a[][N]);
+
 	printf("Ввод матрицы:\n 1- с клавиатуры\n 2-чтение с файла\n");
 	cin >> c;
 	if (c == 1)
 	{
-		read_mat(a);
-		masivX(a, x);
+		PointX = &read_mat;
 		vivodAX(a, x, i, j);
 		vivodY(y, x,i);
 	}
@@ -126,8 +126,7 @@ void programma()
 		ifstream f("111.txt");
 		if (f.is_open())
 		{
-			read_mat_file(a);
-			masivX(a, x);
+			PointX = &read_mat_file;
 			vivodAX(a, x, i, j);
 			vivodY(y, x,i);
 		}

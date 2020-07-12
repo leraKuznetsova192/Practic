@@ -1,2 +1,5 @@
 ﻿  Lab7.cpp
-  Lab7.vcxproj -> E:\учёба\2 семестр\летняя практика\Lab7\Debug\Lab7.exe
+E:\git\Practik\Lab7\Lab7\Lab7.cpp(120,21): error C2440: =: невозможно преобразовать "int (__cdecl *)(int [][5])" в "void (__cdecl *)(int [][5])"
+E:\git\Practik\Lab7\Lab7\Lab7.cpp(120,12): message : Для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
+E:\git\Practik\Lab7\Lab7\Lab7.cpp(129,27): error C2440: =: невозможно преобразовать "int (__cdecl *)(int [][5])" в "void (__cdecl *)(int [][5])"
+E:\git\Practik\Lab7\Lab7\Lab7.cpp(129,13): message : Для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
