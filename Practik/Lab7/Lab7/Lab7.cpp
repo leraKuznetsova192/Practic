@@ -7,7 +7,7 @@
 using namespace std;
 
 
-int read_mat(int a[][N])
+void read_mat(int a[][N])
 {
 	printf("Введите элементы матрицы : \n");
 	for (int i = 0; i < N; i++)
@@ -20,7 +20,7 @@ int read_mat(int a[][N])
 }
 
 
-int read_mat_file(int a[][N])
+void read_mat_file(int a[][N])
 {
 	ifstream f("111.txt");
 	printf("Файл открыт\n");
@@ -32,7 +32,7 @@ int read_mat_file(int a[][N])
 	f.close();
 }
 
-int* vvod_X(int a[][N], int x[N], void (*pfunc) (int mas[][N]))
+int *vvodX(int a[][N], int x[N], void (*pfunc) (int mas[][N]))
 {
 	int q, p, t, s;
 	pfunc(a);
@@ -66,7 +66,7 @@ int* vvod_X(int a[][N], int x[N], void (*pfunc) (int mas[][N]))
 	return x;
 }
 
-void vivodAX(int a[N][N], int x[N], int i, int j)
+void vivodAX(int x[N], int a[N][N], int i, int j)
 {
 	printf("Матрица a:\n");
 	for (i = 0; i < N; i++)
@@ -118,7 +118,7 @@ void programma()
 	if (c == 1)
 	{
 		PointX = &read_mat;
-		vivodAX(a, x, i, j);
+		vivodAX(vvodX(a, x, PointX), a, i, j);
 		vivodY(y, x,i);
 	}
 	else
@@ -127,7 +127,7 @@ void programma()
 		if (f.is_open())
 		{
 			PointX = &read_mat_file;
-			vivodAX(a, x, i, j);
+			vivodAX(vvodX(a, x, PointX),a, i, j);
 			vivodY(y, x,i);
 		}
 		else
