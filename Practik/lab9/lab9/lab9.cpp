@@ -2,9 +2,6 @@
 #include <locale.h>
 #include <iostream>
 #include <fstream>
-#include <iomanip>
-#include <string.h>
-#include <fstream>
 #include <stdlib.h>
 using namespace std;
 
@@ -39,8 +36,8 @@ int maxA(int** a, int k, int n)
 
 int** programm(int** a, int n)
 {
-	int i, j,l,k,b,maxX; int p;
-	 b = 0; k = n-1;
+	int i, j,l,k,maxX; int p;
+	 k = n-1;
 	while (k != 0)
 	{
 		j = 0;
@@ -57,7 +54,6 @@ int** programm(int** a, int n)
 					a[i][l + 1] = p;
 				}
 			}
-			b = b + 1;
 			j = j + 1;
 		}
 		k = k - 1;
