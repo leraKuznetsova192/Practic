@@ -22,11 +22,11 @@ void vvod(int** a, int n)
 
 int maxA(int** a, int k, int n)
 {
-	int max = a[0][k]; int i = 0;
-	while (i < n - 1)
+	int max = a[0][k]; int i = 1;
+	while (i < n )
 	{
-		if (max < a[i + 1][k])
-			max = a[i + 1][k];
+		if (max < a[i][k])
+			max = a[i][k];
 		i = i + 1;
 	}
 	return max;
